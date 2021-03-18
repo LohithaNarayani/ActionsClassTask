@@ -35,21 +35,21 @@ public class WebElementActions {
 		scrollElementIntoView(driver, element);
 		Actions action = new Actions(driver);
 		action.moveToElement(element).build().perform();
-	
+		driver.close();
 	}
 
 	public void dragAndDrop(WebDriver driver, WebElement source, WebElement target) {
 		scrollElementIntoView(driver,source);
 		Actions action = new Actions(driver);
 		action.dragAndDrop(source, target).build().perform();
-		
+		driver.close();
 	}
 
 	public void mouseHover(WebDriver driver, WebElement element) {
 		scrollElementIntoView(driver, element);
 		Actions action = new Actions(driver);
 		action.moveToElement(element).build().perform();
-		
+		driver.close();
 	}
 
 	public void doubleClick(WebElement element, WebDriver driver) throws InterruptedException {
@@ -85,7 +85,6 @@ public class WebElementActions {
 			if (!handle.equals(ParentHandle)) {
 				driver.switchTo().window(handle);
 				System.out.println(driver.switchTo().window(handle).getTitle());
-
 			}
 		}
 	}
@@ -94,4 +93,5 @@ public class WebElementActions {
 	public void iFrameElement(WebDriver driver, WebElement element) {
 		driver.switchTo().frame(element);
 	}
+	
 }
