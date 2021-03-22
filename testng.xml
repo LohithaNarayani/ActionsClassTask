@@ -2,15 +2,19 @@
 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 	<suite thread-count="2" name="TestSuite">
+	<listeners>
+		<listener class-name="utilities.ExtentReportUtil"></listener>
+	</listeners>
 	<test name="Regression">
 		<classes>
-			<class name="test.HomePageTest" />
-			<class name="test.DraggableTest" />
-			<class name="test.MouseHoverTest" />
+			<!-- <class name="test.HomePageTest" /> -->
+			<!-- <class name="test.DraggableTest" />
+			<class name="test.MouseHoverTest" /> -->
 			<class name="test.DoubleClickTest" />
-			<class name="test.SendInputTest" />
+			<!-- <class name="test.SendInputTest" />
 			<class name="test.SwitchTabTest" />
 			<class name="test.IFramesTest" />
+			<class name="test.ExtentReportsDemo" /> -->
 		</classes>
 	</test>
 </suite>
