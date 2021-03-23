@@ -29,27 +29,26 @@ public class ExtentReportUtil implements ITestListener{
 //	}
 
 	public void onStart(ITestContext result) {
-		WebDriverUtils wd = new WebDriverUtils();
-		String browser = System.getProperty("browser");
-		System.out.println("Browser: "+browser);
-		driver = wd.getDriver(browser);
+		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") +"/test-output/testReport.html");
 		
-		report = new ExtentReports(System.getProperty("user.dir") + "ExtentReport1.html");	
+		extent = new ExtentReports();
+        	extent.attachReporter(htmlReporter);
+		htmlReporter.config().setChartVisibilityOnOpen(true);
+        	htmlReporter.config().setDocumentTitle("Extent Report Demo");
+        	htmlReporter.config().setReportName("Test Report");
+        	htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
+        	htmlReporter.config().setTheme(Theme.STANDARD);
+        	htmlReporter.config().setTimeStampFormat("EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'");
 	}
 	
 	public void onTestStart(ITestResult result) {
-		test = report.startTest("ExtentReportDemo");
-		
+		test = extent.createTest("Test");
 	}
 
 
 	public void onTestFailure(ITestResult result) {
-		try {
-			test.log(LogStatus.FAIL,test.addScreenCapture(capture(driver))+ "Test Failed");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}	
-		test.log(LogStatus.FAIL, "Takes the Screen shot of failed testcase");
+	    test.log(Status.FAIL, MarkupHelper.createLabel(result.getName()+" FAILED ", ExtentColor.RED));
+            test.fail(result.getThrowable());
 	}
 
 	private String capture(WebDriver driver) throws IOException {
@@ -59,27 +58,22 @@ public class ExtentReportUtil implements ITestListener{
 		String errflpath = Dest.getAbsolutePath();
 		FileUtils.copyFile(scrFile, Dest);
 		return errflpath;
-		
 	}
 
-	
 	public void onTestSkipped(ITestResult arg0) {
-		// TODO Auto-generated method stub
+	    test.log(Status.SKIP, MarkupHelper.createLabel(result.getName()+" SKIPPED ", ExtentColor.ORANGE));
+            test.skip(result.getThrowable());
 		
 	}
 
 	public void onTestSuccess(ITestResult result) {
-		driver.get("https://www.google.com/");
-		if(driver.getTitle().equals("Gogle"))
-		{
-			test.log(LogStatus.PASS, "Navigated to the specified URL");
-		}
+		test.log(Status.PASS, MarkupHelper.createLabel(result.getName()+" PASSED ", ExtentColor.GREEN));
 	}
 	
 	
 	public void onFinish(ITestContext result) {
 		report.endTest(test);
-		report.flush();	
+		report.flush();
 	}
 
 	
