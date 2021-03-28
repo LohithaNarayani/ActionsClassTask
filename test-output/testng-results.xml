@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="3934" started-at="2021-03-28T06:04:46Z" finished-at="2021-03-28T06:04:50Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="3934" started-at="2021-03-28T06:04:46Z" finished-at="2021-03-28T06:04:50Z">
+      <class name="test.SwitchTabTest">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:test.SwitchTabTest@4883b407]" name="beforeSuite" is-config="true" duration-ms="3270" started-at="2021-03-28T06:04:43Z" finished-at="2021-03-28T06:04:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method status="PASS" signature="testSwitchTabPage()[pri:0, instance:test.SwitchTabTest@4883b407]" name="testSwitchTabPage" duration-ms="3138" started-at="2021-03-28T06:04:46Z" finished-at="2021-03-28T06:04:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSwitchTabPage -->
+        <test-method status="PASS" signature="launchTab()[pri:0, instance:test.SwitchTabTest@4883b407]" name="launchTab" duration-ms="161" started-at="2021-03-28T06:04:50Z" depends-on-methods="test.SwitchTabTest.testSwitchTabPage" finished-at="2021-03-28T06:04:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchTab -->
+        <test-method status="PASS" signature="launchChildWindow()[pri:0, instance:test.SwitchTabTest@4883b407]" name="launchChildWindow" duration-ms="612" started-at="2021-03-28T06:04:50Z" depends-on-methods="test.SwitchTabTest.launchTab" finished-at="2021-03-28T06:04:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchChildWindow -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:test.SwitchTabTest@4883b407]" name="afterSuite" is-config="true" duration-ms="1178" started-at="2021-03-28T06:04:50Z" finished-at="2021-03-28T06:04:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- test.SwitchTabTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
